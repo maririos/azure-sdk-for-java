@@ -4,6 +4,7 @@
 
 package com.azure.ai.formrecognizer.implementation;
 
+import com.azure.ai.formrecognizer.implementation.models.StringIndexType;
 import com.azure.core.annotation.ServiceClientBuilder;
 import com.azure.core.http.HttpClient;
 import com.azure.core.http.HttpPipeline;
@@ -52,6 +53,89 @@ public final class FormRecognizerClientImplBuilder {
      */
     public FormRecognizerClientImplBuilder endpoint(String endpoint) {
         this.endpoint = endpoint;
+        return this;
+    }
+
+    /*
+     * List of 1-based page numbers to analyze.  Ex. "1-3,5,7-9"
+     */
+    private List<String> pages;
+
+    /**
+     * Sets List of 1-based page numbers to analyze. Ex. "1-3,5,7-9".
+     *
+     * @param pages the pages value.
+     * @return the FormRecognizerClientImplBuilder.
+     */
+    public FormRecognizerClientImplBuilder pages(List<String> pages) {
+        this.pages = pages;
+        return this;
+    }
+
+    /*
+     * Locale hint for text recognition and document analysis.  Value may
+     * contain only the language code (ex. "en", "fr") or BCP 47 language tag
+     * (ex. "en-US").
+     */
+    private String locale;
+
+    /**
+     * Sets Locale hint for text recognition and document analysis. Value may contain only the language code (ex. "en",
+     * "fr") or BCP 47 language tag (ex. "en-US").
+     *
+     * @param locale the locale value.
+     * @return the FormRecognizerClientImplBuilder.
+     */
+    public FormRecognizerClientImplBuilder locale(String locale) {
+        this.locale = locale;
+        return this;
+    }
+
+    /*
+     * Method used to compute string offset and length.
+     */
+    private StringIndexType stringIndexType;
+
+    /**
+     * Sets Method used to compute string offset and length.
+     *
+     * @param stringIndexType the stringIndexType value.
+     * @return the FormRecognizerClientImplBuilder.
+     */
+    public FormRecognizerClientImplBuilder stringIndexType(StringIndexType stringIndexType) {
+        this.stringIndexType = stringIndexType;
+        return this;
+    }
+
+    /*
+     * Client-generated unique request ID.
+     */
+    private String repeatabilityRequestID;
+
+    /**
+     * Sets Client-generated unique request ID.
+     *
+     * @param repeatabilityRequestID the repeatabilityRequestID value.
+     * @return the FormRecognizerClientImplBuilder.
+     */
+    public FormRecognizerClientImplBuilder repeatabilityRequestID(String repeatabilityRequestID) {
+        this.repeatabilityRequestID = repeatabilityRequestID;
+        return this;
+    }
+
+    /*
+     * Date and time the request was first created.
+     */
+    private String repeatabilityFirstSent;
+
+    /**
+     * Sets Date and time the request was first created.
+     *
+     * @param repeatabilityFirstSent the repeatabilityFirstSent value.
+     * @return the FormRecognizerClientImplBuilder.
+     */
+    public FormRecognizerClientImplBuilder repeatabilityFirstSent(String repeatabilityFirstSent) {
+        this.repeatabilityFirstSent = repeatabilityFirstSent;
         return this;
     }
 
@@ -198,7 +282,16 @@ public final class FormRecognizerClientImplBuilder {
             this.serializerAdapter = JacksonAdapter.createDefaultSerializerAdapter();
         }
         FormRecognizerClientImpl client =
-                new FormRecognizerClientImpl(pipeline, serializerAdapter, endpoint, apiVersion);
+                new FormRecognizerClientImpl(
+                        pipeline,
+                        serializerAdapter,
+                        endpoint,
+                        pages,
+                        locale,
+                        stringIndexType,
+                        repeatabilityRequestID,
+                        repeatabilityFirstSent,
+                        apiVersion);
         return client;
     }
 

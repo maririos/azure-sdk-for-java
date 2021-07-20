@@ -240,7 +240,7 @@ public final class FormTrainingAsyncClient {
             throw logger.logExceptionAsError(new IllegalArgumentException("'modelId' is required and cannot"
                 + " be null or empty"));
         }
-        return service.getCustomModelWithResponseAsync(UUID.fromString(modelId), true, context)
+        return service.getModelInfoWithResponseAsync(modelId)
             .onErrorMap(Utility::mapToHttpResponseExceptionIfExists)
             .map(response -> new SimpleResponse<>(response, toCustomFormModel(response.getValue())));
     }

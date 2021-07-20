@@ -51,11 +51,11 @@ final class CustomModelTransforms {
      */
     static CustomFormModel toCustomFormModel(Model modelResponse) {
         ModelInfo modelInfo = modelResponse.getModelInfo();
-        if (modelInfo.getStatus() == ModelStatus.INVALID) {
-            throw LOGGER.logExceptionAsError(
-                new IllegalArgumentException(String.format("Model Id %s returned with invalid status.",
-                    modelInfo.getModelId())));
-        }
+        // if (modelInfo.getStatus() == ModelStatus.INVALID) {
+        //     throw LOGGER.logExceptionAsError(
+        //         new IllegalArgumentException(String.format("Model Id %s returned with invalid status.",
+        //             modelInfo.getModelId())));
+        // }
 
         List<TrainingDocumentInfo> trainingDocumentInfoList = null;
         List<FormRecognizerError> modelErrors = null;
