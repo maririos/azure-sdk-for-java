@@ -48,6 +48,7 @@
     <jacoco.min.linecoverage>0.60</jacoco.min.linecoverage>
     <jacoco.min.branchcoverage>0.60</jacoco.min.branchcoverage>
     <boring-ssl-classifier></boring-ssl-classifier>
+    <show.deprecation.warnings>true</show.deprecation.warnings>
   </properties>
 
   <developers>
@@ -227,18 +228,6 @@
           </plugins>
         </configuration>
       </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version> <!-- {x-version-update;org.apache.maven.plugins:maven-compiler-plugin;external_dependency} -->
-        <configuration>
-          <compilerArgs>
-            <arg>-Xlint:deprecation</arg>
-          </compilerArgs>
-        </configuration>
-      </plugin>
-
     </plugins>
   </build>
 
